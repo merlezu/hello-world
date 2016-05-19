@@ -1,0 +1,101 @@
+
+Official Git website:
+-http://git-scm.com
+
+GitHub instructions (with screenshots)
+-https://help.github.com/articles/set-up-git
+
+Initialize a project folder
+git init
+
+git add
+
+git commit -m "message" or git commit -am "message"
+
+git commit --ammend -m "message"
+
+git checkout <part of SHA> -- file.txt
+
+git diff --staged or git diff or git diff file.txt
+
+git reset HEAD file.txt
+
+git revert <SHA>
+
+cat .git/HEAD
+
+git reset --soft <SHA>
+git reset --mixed <SHA>
+git reser --hard <SHA>
+
+git clean  -n or git clean -f  (-n is a trial run)
+
+project/.gitignore /* ignore files in project can use * ! etc.
+project/.gitkeep /* can use touch folder/pdf/.gitkeep
+
+tree-ish
+ *full SHA-1 hash
+ *portion of SHA-1 (8 to 10 characters)
+ *HEAD pointer
+ *branch referrence
+ *ancestry (^ or ~1 or ^^ or ~2 etc.)
+
+git remote (see all remotes)
+git branch (see all branches, use -r -a)
+
+git remote add origin https://github/etc. (origin is just a name and cna be changed)
+
+git remote rm origin
+
+git push -u origin master
+
+git clone <path> <local folder name>
+
+git fetch origin
+
+git merge origin/master (always do a git fetch first)
+
+git pull origin/master (combines git fetch and git merge)
+
+git branch <local branch name- you give it> origin/non_tracking (last is the remote branch name)
+
+git checkout -b feed_back.html
+
+Collaboration Workflow
+
+You:
+>git checkout master
+>git fetch (as long as master is tracked)
+>git merge origin/master
+>git checkout -b feedback_form
+does some work creating feedback.html
+>git add feedback.html
+>git commit -m "Add customer feedback form"
+>git fetch (as long as master is tracked)
+>git push -u origin feedback_form
+
+Other:
+>git checkout master
+>git fetch (as long as master is tracked)
+>git merge origin/master
+>git checkout -b feedback_form origin/feedback_form (creates branch from remote)
+>git log
+>git show <SHA>
+does some work, adds to the feedback.html
+>git add feedback.html
+>git commit -m "Added code to feedback form"
+>git fetch (as long as master is tracked)
+>git push -u origin feedback_form (or just git push if being tracked)
+
+You:
+git fetch
+>git log -p feedback_form..origin/feedback_form
+review log of patches (-p) made between your .html and origin/ .html
+>git merge origin/feedback_form
+>git checkout master
+>git fetch
+>git merge origin/master (make sure your master is up-to-date)
+>git merge feedback_form (merge the other changes into your work)
+>git push (update the remote)
+
+
