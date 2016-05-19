@@ -1,0 +1,7 @@
+*.tmp
+*.log
+*.zip
+*.gz
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
